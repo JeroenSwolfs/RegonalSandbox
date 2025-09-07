@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.9 (RegionalSandbox)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (RegionalSandbox)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (Backlinker)" project-jdk-type="Python SDK" />
 </project>

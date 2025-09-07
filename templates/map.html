@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="map-body">
+    <h1 class="map-title">Dutna Technologies Region Analytics</h1>
+    <div id="map" class="dutch-map" style="height: 100vh;"></div>
+    <div class="map-control-panel">
+        <h2>Control panel</h2>
+        <button onclick="loadMunicipalityGeoJSON()">Load municipalities</button>
+
+    </div>
+    <div class="loading-screen" id="loading-screen">
+        <img class="loading-icon" src="{{ url_for('static', filename='dutnaLogo.png') }}" alt="Loading..." class="loading-gif">
+    </div>
+
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
+</body>
+</html>

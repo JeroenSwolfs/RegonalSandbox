@@ -1,5 +1,6 @@
 // Initialize map
 const map = L.map('map').setView([52.1326, 5.2913], 7);
+const loadingScreen = document.getElementById('loading-screen');
 
 // Light monotone tile layer (Carto Light)
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -9,9 +10,12 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 // Load ADM2 GeoJSON with clickable municipalities
-fetch('geoBoundaries-NLD-ADM2-all/geoBoundaries-NLD-ADM2.geojson')
+function loadMunicipalityGeoJSON() {
+    loadingScreen.style.display = 'flex'; // Show loading screen
+    fetch('municipality_geoJSON')
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         L.geoJSON(data, {
             style: {
                 color: 'blue',
@@ -33,4 +37,17 @@ fetch('geoBoundaries-NLD-ADM2-all/geoBoundaries-NLD-ADM2.geojson')
             }
         }).addTo(map);
     })
-    .catch(err => console.error("Error loading GeoJSON:", err));
+    .catch(err => console.error("Error loading GeoJSON:", err))
+    .finally(() => {
+        loadingScreen.style.display = 'none'; // Hide loading screen
+    });
+}
+
+// fetch from a local api
+// fetch('http://localhost:3000/api/data')
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log(data);
+//         // Process and visualize the data on the map as needed
+//     })
+//     .catch(err => console.error("Error fetching API data:", err));
